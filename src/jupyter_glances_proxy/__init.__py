@@ -67,11 +67,12 @@ def run_app():
     logger.debug(f"[{user}] Launch Command: {executable_name}")
     return {
         "command": [
-            executable_name,
-            f"--host={host}",
-            "--listen={port}",
-            "--debug",
-            "--sessions",
+            "glances",
+            "--webserver",
+            f"--bind={host}",
+            "--port={port}",
+            "--disable-plugin=all",
+            "--enable-plugin=cpu,core,mem,memswap,load,now,processcount,processlist,system,uptime,cloud,fs,folders,ip,network",
         ],
         "timeout": 100,
         "environment": _get_env,
