@@ -67,7 +67,7 @@ def run_app():
     logger.debug(f"[{user}] Launch Command: {executable_name}")
     return {
         "command": [
-            "glances",
+            executable_name,
             "--webserver",
             f"--bind={host}",
             "--port={port}",
