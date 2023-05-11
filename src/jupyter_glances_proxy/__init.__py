@@ -76,7 +76,7 @@ def run_app():
         ],
         "timeout": 100,
         "environment": _get_env,
-        "absolute_url": True,
+        "absolute_url": False,
         # "rewrite_response": rewrite_netloc,
         "launcher_entry": {
             "title": "glances",
