@@ -79,7 +79,7 @@ def run_app():
         "absolute_url": False,
         # "rewrite_response": rewrite_netloc,
         "launcher_entry": {
-            "title": "glances",
+            "title": "Glances",
             "icon_path": icon_path
         },
     }
