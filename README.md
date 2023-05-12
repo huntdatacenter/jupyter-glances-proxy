@@ -1,6 +1,6 @@
 # jupyter-glances-proxy
 
-Glances: the monitoring spirit tool 
+**Glances: An eye on your system** 
 
 ## Build
 
