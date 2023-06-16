@@ -20,7 +20,7 @@ up: build  ## Run docker compose service
 	echo "open http://127.0.0.1:8888/lab"
 	bash -c "open http://127.0.0.1:8888/lab"
 	sleep 2
-	docker logs -n 1000 -f glances-jupyterlab
+	docker logs -n 1000 -f jupyterlab
 
 down:  ## Stop docker compose service
 	docker compose down
