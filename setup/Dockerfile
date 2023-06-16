@@ -3,14 +3,10 @@ FROM jupyter/minimal-notebook:lab-3.6.1
 USER root
 RUN set -x \
     && apt-get update \
-    && apt-get install -y curl postgresql-client
-
-WORKDIR /etc/glances
-COPY setup/config_system.py /etc/glances/config_system.py
+    && apt-get install -y curl
 
 # setup package, enable classic extension, build lab extension
 # USER "${NB_USER}"
-RUN mamba install -q -c conda-forge -y uwsgi simple-websocket psycopg
 RUN python3 -m pip install glances
 RUN fix-permissions /opt/conda
 
