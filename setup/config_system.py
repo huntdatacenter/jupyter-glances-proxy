@@ -2,9 +2,9 @@
 
 ##########################################################################
 #
-# pgAdmin 4 - PostgreSQL Tools
+# Glances - An eye on your system
 #
-# Copyright (C) 2013 - 2023, The pgAdmin Development Team
+# Copyright (C) 2013 - 2023, The Glances Development Team
 # This software is released under the PostgreSQL Licence
 #
 # config.py - Core application configuration settings
@@ -22,14 +22,14 @@ import sys  # noqa
 # if sys.path[0] != root:
 #     sys.path.insert(0, root)
 
-# from pgadmin.utils import env
+# from glances.utils import env
 
 ##########################################################################
 # Application settings
 ##########################################################################
 
 # Name of the application to display in the UI
-APP_NAME = 'pgAdmin 4'
+APP_NAME = 'Glances'
 APP_ICON = 'pg-icon'
 
 ##########################################################################
@@ -62,7 +62,7 @@ else:
     APP_VERSION = '%s.%s-%s' % (APP_RELEASE, APP_REVISION, APP_SUFFIX)
 
 # Copyright string for display in the app
-APP_COPYRIGHT = 'Copyright (C) 2013 - 2023, The pgAdmin Development Team'
+APP_COPYRIGHT = 'Copyright (C) 2013 - 2023, The Glances Development Team'
 
 ##########################################################################
 # Misc stuff
@@ -127,11 +127,11 @@ WTF_CSRF_HEADERS = ['X-pgA-CSRFToken']
 
 # User ID (email address) to use for the default user in desktop mode.
 # The default should be fine here, as it's not exposed in the app.
-DESKTOP_USER = 'pgadmin4@pgadmin.org'
+DESKTOP_USER = 'glances@glances.readthedocs.io'
 
 # This option allows the user to host the application on a LAN
 # Default hosting is on localhost (DEFAULT_SERVER='localhost').
-# To host pgAdmin4 over LAN set DEFAULT_SERVER='0.0.0.0' (or a specific
+# To host Glances over LAN set DEFAULT_SERVER='0.0.0.0' (or a specific
 # adaptor address.
 #
 # NOTE: This is NOT recommended for production use, only for debugging
@@ -144,9 +144,9 @@ APPLICATION_ROOT = os.getenv('APPLICATION_ROOT')
 # The default port on which the app server will listen if not set in the
 # environment by the runtime
 try:
-    DEFAULT_SERVER_PORT = int(os.getenv('PGADMIN_LISTEN_PORT'))
+    DEFAULT_SERVER_PORT = int(os.getenv('GLANCES_LISTEN_PORT'))
 except Exception:
-    raise Exception("Set number value for env variable PGADMIN_LISTEN_PORT.")
+    raise Exception("Set number value for env variable GLANCES_LISTEN_PORT.")
 
 # This param is used to override the default web server information about
 # the web technology and the frameworks being used in the application
@@ -241,7 +241,7 @@ SEND_FILE_MAX_AGE_DEFAULT = 31556952
 # This will be added to static urls as url parameter with value as
 # APP_VERSION_INT for cache busting on version upgrade. If the value is set as
 # None or empty string then it will not be added.
-# eg - http:localhost:5050/pgadmin.css?intver=3.13
+# eg - http:localhost:5050/glances.css?intver=3.13
 APP_VERSION_PARAM = 'ver'
 
 # Add the internal version param to below extensions only
@@ -249,20 +249,20 @@ APP_VERSION_EXTN = ('.css', '.js', '.html', '.svg', '.png', '.gif', '.ico')
 
 # Data directory for storage of config settings etc. This shouldn't normally
 # need to be changed - it's here as various other settings depend on it.
-# On Windows, we always store data in %APPDATA%\pgAdmin. On other platforms,
-# if we're in server mode we use /var/lib/pgadmin, otherwise ~/.pgadmin
+# On Windows, we always store data in %APPDATA%\glances. On other platforms,
+# if we're in server mode we use /var/lib/glances, otherwise ~/.glances
 # i:
 #     # Use the short path on windows
 #     DATA_DIR = os.path.realpath(
-#         os.path.join(fs_short_path(env('APPDATA')), "pgAdmin")
+#         os.path.join(fs_short_path(env('APPDATA')), "glances")
 #     )
 # else:
 #     if SERVER_MODE:
-#         DATA_DIR = '/var/lib/pgadmin'
+#         DATA_DIR = '/var/lib/glances'
 #     else:
-#         DATA_DIR = os.path.realpath(os.path.expanduser('~/.pgadmin/'))
+#         DATA_DIR = os.path.realpath(os.path.expanduser('~/.glances/'))
 
-DATA_DIR = os.path.realpath(os.path.expanduser('~/.pgadmin/'))
+DATA_DIR = os.path.realpath(os.path.expanduser('~/.glances/'))
 
 # An optional login banner to show security warnings/disclaimers etc. at
 # login and password recovery etc. HTML may be included for basic formatting,
@@ -296,10 +296,10 @@ FILE_LOG_FORMAT = '%(asctime)s: %(levelname)s\t%(name)s:\t%(message)s'
 # Log file name. This goes in the data directory, except on non-Windows
 # platforms in server mode.
 # if SERVER_MODE and not IS_WIN:
-#     LOG_FILE = '/var/log/pgadmin/pgadmin4.log'
+#     LOG_FILE = '/var/log/glances/glances.log'
 # else:
-#     LOG_FILE = os.path.join(DATA_DIR, 'pgadmin4.log')
-LOG_FILE = os.path.join(DATA_DIR, 'pgadmin4.log')
+#     LOG_FILE = os.path.join(DATA_DIR, 'glances.log')
+LOG_FILE = os.path.join(DATA_DIR, 'glances.log')
 
 # Log rotation setting
 # Log file will be rotated considering values for LOG_ROTATION_SIZE
@@ -330,9 +330,9 @@ MAX_SESSION_IDLE_TIME = 60
 # PostgreSQL:
 # postgresql://username:password@host:port/database
 # Specify Schema Name
-# postgresql://username:password@host:port/database?options=-csearch_path=pgadmin
+# postgresql://username:password@host:port/database?options=-csearch_path=glances
 # Using PGPASS file
-# postgresql://username@host:port?options=-csearch_path=pgadmin
+# postgresql://username@host:port?options=-csearch_path=glances
 ##########################################################################
 CONFIG_DATABASE_URI = ''
 
@@ -343,8 +343,8 @@ CONFIG_DATABASE_URI = ''
 # The default path to the SQLite database used to store user accounts and
 # settings. This default places the file in the same directory as this
 # config file, but generates an absolute path for use througout the app.
-# SQLITE_PATH = env('SQLITE_PATH') or os.path.join(DATA_DIR, 'pgadmin4.db')
-SQLITE_PATH = os.path.join(DATA_DIR, 'pgadmin4.db')
+# SQLITE_PATH = env('SQLITE_PATH') or os.path.join(DATA_DIR, 'glances.db')
+SQLITE_PATH = os.path.join(DATA_DIR, 'glances.db')
 
 # SQLITE_TIMEOUT will define how long to wait before throwing the error -
 # OperationError due to database lock. On slower system, you may need to change
@@ -362,7 +362,7 @@ MAX_QUERY_HIST_STORED = 20
 ##########################################################################
 # Server-side session storage path
 #
-# SESSION_DB_PATH (Default: $HOME/.pgadmin4/sessions)
+# SESSION_DB_PATH (Default: $HOME/.glances/sessions)
 ##########################################################################
 #
 # We use SQLite for server-side session storage. There will be one
@@ -376,12 +376,12 @@ MAX_QUERY_HIST_STORED = 20
 # On certain systems, you can use shared memory (tmpfs) for maximum
 # scalability, for example, on Ubuntu:
 #
-# SESSION_DB_PATH = '/run/shm/pgAdmin4_session'
+# SESSION_DB_PATH = '/run/shm/glances_session'
 #
 ##########################################################################
 SESSION_DB_PATH = os.path.join(DATA_DIR, 'sessions')
 
-SESSION_COOKIE_NAME = 'pga4_session'
+SESSION_COOKIE_NAME = 'glances_session'
 
 ##########################################################################
 # Mail server settings
@@ -433,10 +433,10 @@ SECURITY_EMAIL_VALIDATOR_ARGS = \
 UPGRADE_CHECK_ENABLED = True
 
 # Where should we get the data from?
-UPGRADE_CHECK_URL = 'https://www.pgadmin.org/versions.json'
+UPGRADE_CHECK_URL = 'https://www.glances.readthedocs.io/versions.json'
 
 # What key should we look at in the upgrade data file?
-UPGRADE_CHECK_KEY = 'pgadmin4'
+UPGRADE_CHECK_KEY = 'glances'
 
 # Which CA file should we use?
 # Default to cacert.pem in the same directory as config.py et al.
@@ -473,7 +473,7 @@ STORAGE_DIR = os.path.join(DATA_DIR, 'storage')
 #
 # In cases where it may be difficult to know what the working directory
 # is, "$DIR" can be specified. This will be replaced with the path to the
-# top-level pgAdmin4.py file. For example, on macOS we might use:
+# top-level glances.py file. For example, on macOS we might use:
 #
 # $DIR/../../SharedSupport
 #
@@ -500,7 +500,7 @@ DEFAULT_BINARY_PATHS = {
 ##########################################################################
 
 # The default path for SQLite database for testing
-TEST_SQLITE_PATH = os.path.join(DATA_DIR, 'test_pgadmin4.db')
+TEST_SQLITE_PATH = os.path.join(DATA_DIR, 'test_glances.db')
 
 ##########################################################################
 # Allows flask application to response to the each request asynchronously
@@ -556,11 +556,11 @@ if not SERVER_MODE:
 # the session files for cleanup after specified number of *hours*.
 CHECK_SESSION_FILES_INTERVAL = 24
 
-# USER_INACTIVITY_TIMEOUT is interval in Seconds. If the pgAdmin screen is left
+# USER_INACTIVITY_TIMEOUT is interval in Seconds. If the Glances screen is left
 # unattended for <USER_INACTIVITY_TIMEOUT> seconds then the user will
 # be logged out. When set to 0, the timeout will be disabled.
-# If pgAdmin doesn't detect any activity in the time specified (in seconds),
-# the user will be forcibly logged out from pgAdmin. Set to zero to disable
+# If Glances doesn't detect any activity in the time specified (in seconds),
+# the user will be forcibly logged out from Glances. Set to zero to disable
 # the timeout.
 # Note: This is applicable only for SERVER_MODE=True.
 USER_INACTIVITY_TIMEOUT = 0
@@ -588,9 +588,9 @@ MASTER_PASSWORD_REQUIRED = True
 
 ##########################################################################
 
-# pgAdmin encrypts the database connection and ssh tunnel password using a
-# master password or pgAdmin login password (for other authentication sources)
-# before storing it in the pgAdmin configuration database.
+# Glances encrypts the database connection and ssh tunnel password using a
+# master password or Glances login password (for other authentication sources)
+# before storing it in the Glances configuration database.
 #
 # Below setting is used to allow the user to specify the path to a script
 # or program that will return an encryption key which will be used to
@@ -605,7 +605,7 @@ MASTER_PASSWORD_HOOK = None
 
 ##########################################################################
 
-# Allows pgAdmin4 to create session cookies based on IP address, so even
+# Allows Glances to create session cookies based on IP address, so even
 # if a cookie is stolen, the attacker will not be able to connect to the
 # server using that stolen cookie.
 # Note: This can cause problems when the server is deployed in dynamic IP
@@ -623,7 +623,7 @@ ENHANCED_COOKIE_PROTECTION = True
 # Multiple authentication can be achieved by setting this parameter to
 # ['ldap', 'internal'] or ['oauth2', 'internal'] or
 # ['webserver', 'internal'] etc.
-# pgAdmin will authenticate the user with ldap/oauth2 whatever first in the
+# Glances will authenticate the user with ldap/oauth2 whatever first in the
 # list, in case of failure the second authentication option will be considered.
 
 AUTHENTICATION_SOURCES = ['internal']
@@ -668,7 +668,7 @@ LDAP_USERNAME_ATTRIBUTE = '<User-id>'
 
 # LDAP Bind User DN Example: cn=username,dc=example,dc=com
 # Set this parameter to allow the connection to bind using a dedicated user.
-# After the connection is made, the pgadmin login user will be further
+# After the connection is made, the glances login user will be further
 # authenticated by the username and password provided
 # at the login screen.
 LDAP_BIND_USER = None
@@ -680,13 +680,13 @@ LDAP_BIND_PASSWORD = None
 # 2. Anonymous Binding
 
 # Set this parameter to allow the anonymous bind.
-# After the connection is made, the pgadmin login user will be further
+# After the connection is made, the glances login user will be further
 # authenticated by the username and password provided
 
 LDAP_ANONYMOUS_BIND = False
 
 # OR ####################
-# 3. Bind as pgAdmin user
+# 3. Bind as Glances user
 
 # BaseDN (REQUIRED)
 # AD example:
@@ -706,7 +706,7 @@ LDAP_BIND_FORMAT = '{LDAP_USERNAME_ATTRIBUTE}={LDAP_USERNAME},{LDAP_BASE_DN}'
 ##########################################################################
 
 # Search ldap for further authentication (REQUIRED)
-# It can be optional while bind as pgAdmin user
+# It can be optional while bind as Glances user
 LDAP_SEARCH_BASE_DN = '<Search-Base-DN>'
 
 # The LDAP attribute indicates whether the DN (Distinguished Names)
@@ -830,7 +830,7 @@ MFA_ENABLED = True
 # two-authentication methods on logged-in.
 MFA_FORCE_REGISTRATION = False
 
-# pgAdmin supports Two-factor authentication by either sending an one-time code
+# Glances supports Two-factor authentication by either sending an one-time code
 # to an email, or using the TOTP based application like Google Authenticator.
 MFA_SUPPORTED_METHODS = ["email", "authenticator"]
 
@@ -839,13 +839,13 @@ MFA_SUPPORTED_METHODS = ["email", "authenticator"]
 
 # Subject for the email verification code
 # Default: <APP_NAME> - Verification Code
-# e.g.  pgAdmin 4 - Verification Code
+# e.g.  Glances - Verification Code
 MFA_EMAIL_SUBJECT = None
 
 ##########################################################################
 # PSQL tool settings
 ##########################################################################
-# This will enable PSQL tool in pgAdmin when running in server mode.
+# This will enable PSQL tool in Glances when running in server mode.
 # PSQL is always enabled in Desktop mode, however in server mode it is
 # disabled by default because users can run arbitrary commands on the
 # server through it.
@@ -871,9 +871,9 @@ ENABLE_BINARY_PATH_BROWSING = False
 SHARED_STORAGE = []
 
 #############################################################################
-# AUTO_DISCOVER_SERVERS setting is used to enable the pgAdmin to discover the
+# AUTO_DISCOVER_SERVERS setting is used to enable the Glances to discover the
 # database server automatically on the local machine.
-# When it is set to False, pgAdmin will not discover servers installed on
+# When it is set to False, Glances will not discover servers installed on
 # the local machine.
 #############################################################################
 AUTO_DISCOVER_SERVERS = True
@@ -888,5 +888,5 @@ SERVER_HEARTBEAT_TIMEOUT = 30  # In seconds
 #############################################################################
 # Patch the default config with custom config and other manipulations
 #############################################################################
-# from pgadmin.evaluate_config import evaluate_and_patch_config
+# from glances.evaluate_config import evaluate_and_patch_config
 # locals().update(evaluate_and_patch_config(locals()))
